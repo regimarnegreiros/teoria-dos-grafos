@@ -30,3 +30,18 @@ class Grafo(ABC):
     def imprimir(self):
         """Imprime a matriz / lista ligada do grafo."""
         pass
+
+    @abstractmethod
+    def is_simples(self) -> bool:
+        """Retorna se o grafo é simples."""
+        pass
+
+    @abstractmethod
+    def is_nulo(self) -> bool:
+        """Retorna se o grafo é nulo."""
+        pass
+
+    @abstractmethod
+    def is_completo(self) -> bool:
+        """Retorna se o grafo é completo."""
+        pass

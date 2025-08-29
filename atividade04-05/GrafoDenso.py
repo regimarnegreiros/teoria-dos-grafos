@@ -5,9 +5,9 @@ class GrafoDenso(Grafo):
         if isinstance(rotulos, int):
             self.rotulos = list(range(rotulos))
         elif isinstance(rotulos, list):
-            self.rotulos = rotulos
+            self.rotulos = rotulos.copy()
         else:
-            raise ValueError("Rotulo inválido.")
+            raise ValueError(f"Rotulo inválido. {type(rotulos)}")
         
         self.n = len(self.rotulos)
         self.matriz = [[0 for _ in range(self.n)] for _ in range(self.n)]
@@ -46,3 +46,26 @@ class GrafoDenso(Grafo):
         print(" ", " ".join(map(str, self.rotulos)))
         for i in range(self.n):
             print(self.rotulos[i], " ".join(map(str, self.matriz[i])))
+
+    def is_simples(self):
+        is_simples = True
+        for i in range(self.n):
+            if self.matriz[i][i] == 1:
+                is_simples = False
+        return is_simples
+
+    def is_nulo(self):
+        is_nulo = True
+        for i in range(self.n):
+            for j in range(self.n):
+                if self.matriz[i][j] == 1:
+                    is_nulo = False
+        return is_nulo
+        
+    def is_completo(self):
+        is_completo = True
+        for i in range(self.n):
+            for j in range(self.n):
+                if self.matriz[i][j] == 0 and i != j:
+                    is_completo = False
+        return is_completo
