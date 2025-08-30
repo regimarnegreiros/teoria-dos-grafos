@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List, Tuple, Any
 
 class Grafo(ABC):
     @abstractmethod
@@ -44,4 +45,29 @@ class Grafo(ABC):
     @abstractmethod
     def is_completo(self) -> bool:
         """Retorna se o grafo é completo."""
+        pass
+
+    @abstractmethod
+    def get_vertices(self) -> list:
+        """Retorna uma lista de vértices."""
+        pass
+
+    @abstractmethod
+    def get_arestas(self) -> List[Tuple[Any, Any]]:
+        """Retorna uma lista de tuplas contendo as arestas."""
+        pass
+
+    @abstractmethod
+    def is_subgrafo(self, outro_grafo) -> bool:
+        """Retorna se o grafo é um subgrafo."""
+        pass
+
+    @abstractmethod
+    def is_subgrafo_gerador(self, outro_grafo) -> bool:
+        """Retorna se o grafo é um subgrafo gerador."""
+        pass
+
+    @abstractmethod
+    def is_subgrafo_induzido(self, outro_grafo) -> bool:
+        """Retorna se o grafo é um subgrafo induzido."""
         pass

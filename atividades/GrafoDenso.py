@@ -69,3 +69,55 @@ class GrafoDenso(Grafo):
                 if self.matriz[i][j] == 0 and i != j:
                     is_completo = False
         return is_completo
+    
+    def get_vertices(self):
+        return self.rotulos.copy()
+
+    def get_arestas(self):
+        arestas = []
+        for i in range(self.n):
+            for j in range(i+1, self.n):
+                if self.matriz[i][j] == 1:
+                    arestas.append((self.rotulos[i], self.rotulos[j]))
+        return arestas
+
+    def is_subgrafo(self, outro_grafo: Grafo):
+        for v in self.rotulos:
+            if v not in outro_grafo.get_vertices():
+                return False
+        
+        arestas_outro = outro_grafo.get_arestas()
+        for aresta in self.get_arestas():
+            if aresta not in arestas_outro and (aresta[1], aresta[0]) not in arestas_outro:
+                return False
+        
+        return True
+
+    def is_subgrafo_gerador(self, outro_grafo: Grafo):
+        meus_vertices = self.get_vertices()
+        outros_vertices = outro_grafo.get_vertices()
+        if sorted(meus_vertices) != sorted(outros_vertices):
+            return False
+
+        arestas_outro = outro_grafo.get_arestas()
+        for aresta in self.get_arestas():
+            if aresta not in arestas_outro and (aresta[1], aresta[0]) not in arestas_outro:
+                return False
+        
+        return True
+
+    def is_subgrafo_induzido(self, outro_grafo: Grafo):
+        for v in self.rotulos:
+            if v not in outro_grafo.get_vertices():
+                return False
+
+        arestas_outro = []
+        for (u, v) in outro_grafo.get_arestas():
+            if u in self.rotulos and v in self.rotulos:
+                arestas_outro.append((u, v))
+
+        minhas_arestas = self.get_arestas()
+        if sorted(minhas_arestas) != sorted(arestas_outro):
+            return False
+
+        return True
