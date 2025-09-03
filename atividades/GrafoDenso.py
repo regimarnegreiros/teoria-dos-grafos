@@ -122,9 +122,6 @@ class GrafoDenso(Grafo):
             return False
 
         return True
-    
-    # def is_isomorfo(self, outro_grafo):
-    #     pass
 
     def is_isomorfo(self, outro_grafo: Grafo):
         if not isinstance(outro_grafo, Grafo):
@@ -143,7 +140,6 @@ class GrafoDenso(Grafo):
 
         for perm in permutations(vertices_2):
             mapping = dict(zip(vertices_1, perm))
-            print(mapping)
 
             for aresta in arestas_1:
                 u1, v1 = aresta
