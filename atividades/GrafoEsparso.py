@@ -21,7 +21,7 @@ class GrafoEsparso(Grafo):
         return self.arestas
 
     def sequencia_de_graus(self):
-        return [len(self.adj[v]) for v in self.rotulos]
+        return sorted([len(self.adj[v]) for v in self.rotulos])
 
     def adicionar_aresta(self, u, v):
         if v not in self.adj[u]:
@@ -106,3 +106,6 @@ class GrafoEsparso(Grafo):
             return False
 
         return True
+    
+    def is_isomorfo(self, outro_grafo):
+        pass

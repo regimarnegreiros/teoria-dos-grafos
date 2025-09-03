@@ -1,4 +1,5 @@
 from Grafo import Grafo
+from itertools import permutations
 
 class GrafoDenso(Grafo):
     def __init__(self, rotulos: int | list):
@@ -20,7 +21,7 @@ class GrafoDenso(Grafo):
         return self.arestas
 
     def sequencia_de_graus(self):
-        graus = [sum(linha) for linha in self.matriz]
+        graus = sorted([sum(linha) for linha in self.matriz])
         return graus
 
     def adicionar_aresta(self, u, v):
@@ -121,3 +122,36 @@ class GrafoDenso(Grafo):
             return False
 
         return True
+    
+    # def is_isomorfo(self, outro_grafo):
+    #     pass
+
+    def is_isomorfo(self, outro_grafo: Grafo):
+        if not isinstance(outro_grafo, Grafo):
+            raise ValueError(f"Tipo inválido. {type(rotulos)}")
+        
+        if (self.numero_de_arestas() != outro_grafo.numero_de_arestas()
+            or self.numero_de_vertices() != outro_grafo.numero_de_vertices()
+            or self.sequencia_de_graus() != outro_grafo.sequencia_de_graus()):
+            return False
+
+        vertices_1 = list(self.get_vertices())
+        vertices_2 = list(outro_grafo.get_vertices())
+
+        arestas_1 = self.get_arestas()
+        arestas_2 = outro_grafo.get_arestas()
+
+        for perm in permutations(vertices_2):
+            mapping = dict(zip(vertices_1, perm))
+            print(mapping)
+
+            for aresta in arestas_1:
+                u1, v1 = aresta
+
+                u2 = mapping[u1]
+                v2 = mapping[v1]
+
+                if not ((u2, v2) not in arestas_2) and ((v2, u2) not in arestas_2):
+                    return True
+                    
+        return False

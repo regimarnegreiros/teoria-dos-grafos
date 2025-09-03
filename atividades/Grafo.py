@@ -71,3 +71,8 @@ class Grafo(ABC):
     def is_subgrafo_induzido(self, outro_grafo) -> bool:
         """Retorna se o grafo é um subgrafo induzido."""
         pass
+
+    @abstractmethod
+    def is_isomorfo(self, outro_grafo) -> bool:
+        """Retorna se o grafo é isomorfo a outro grafo."""
+        pass

@@ -82,3 +82,26 @@ print("g7 é subgrafo induzido de g1?", g7.is_subgrafo_induzido(g1))
 print("g5 é subgrafo induzido de g4?", g5.is_subgrafo_induzido(g4))
 print("g6 é subgrafo induzido de g1?", g6.is_subgrafo_induzido(g1))
 
+
+g8 = GrafoDenso(['A', 'B', 'C'])
+g8.adicionar_aresta('A', 'B')
+g8.adicionar_aresta('A', 'C')
+
+g9 = GrafoDenso(['X', 'Y', 'Z'])
+g9.adicionar_aresta('X', 'Y')
+g9.adicionar_aresta('X', 'Z')
+
+print("\n===== Testes Grafo Isomorfo =====")
+print("g8 é isomorfo com g9?", g8.is_isomorfo(g9))
+
+g10 = GrafoDenso(['A', 'B', 'C', 'D'])
+g10.adicionar_aresta('A', 'B')
+g10.adicionar_aresta('A', 'C')
+g10.adicionar_aresta('B', 'D')
+
+g12 = GrafoDenso(['W', 'X', 'Y', 'Z'])
+g12.adicionar_aresta('X', 'Y')  # corresponde a A-B
+g12.adicionar_aresta('X', 'Z')  # corresponde a A-C
+g12.adicionar_aresta('Y', 'W')  # corresponde a B-D
+
+print("g8 é isomorfo com g9?", g10.is_isomorfo(g12))
