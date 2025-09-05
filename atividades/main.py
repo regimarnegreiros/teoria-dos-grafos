@@ -99,9 +99,11 @@ g10.adicionar_aresta('A', 'B')
 g10.adicionar_aresta('A', 'C')
 g10.adicionar_aresta('B', 'D')
 
-g12 = GrafoDenso(['W', 'X', 'Y', 'Z'])
-g12.adicionar_aresta('X', 'Y')  # corresponde a A-B
-g12.adicionar_aresta('X', 'Z')  # corresponde a A-C
-g12.adicionar_aresta('Y', 'W')  # corresponde a B-D
+g11 = GrafoDenso(['W', 'X', 'Y', 'Z'])
+g11.adicionar_aresta('X', 'Y')  # corresponde a A-B
+g11.adicionar_aresta('X', 'Z')  # corresponde a A-C
+g11.adicionar_aresta('Y', 'W')  # corresponde a B-D
 
-print("g8 é isomorfo com g9?", g10.is_isomorfo(g12))
+print("g10 é isomorfo com g11?", g10.is_isomorfo(g11))
+print("g7 é isomorfo com g11?", g7.is_isomorfo(g11))
+print("g5 é isomorfo com g11?", g5.is_isomorfo(g11))

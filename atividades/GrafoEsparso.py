@@ -108,9 +108,6 @@ class GrafoEsparso(Grafo):
 
         return True
     
-    def is_isomorfo(self, outro_grafo):
-        pass
-
     def is_isomorfo(self, outro_grafo: Grafo):
         if not isinstance(outro_grafo, Grafo):
             raise ValueError(f"Tipo inválido. {type(rotulos)}")
@@ -135,7 +132,9 @@ class GrafoEsparso(Grafo):
                 u2 = mapping[u1]
                 v2 = mapping[v1]
 
-                if not ((u2, v2) not in arestas_2) and ((v2, u2) not in arestas_2):
-                    return True
+                if ((u2, v2) not in arestas_2) and ((v2, u2) not in arestas_2):
+                    break
+            else:
+                return True
                     
         return False

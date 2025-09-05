@@ -147,7 +147,9 @@ class GrafoDenso(Grafo):
                 u2 = mapping[u1]
                 v2 = mapping[v1]
 
-                if not ((u2, v2) not in arestas_2) and ((v2, u2) not in arestas_2):
-                    return True
+                if ((u2, v2) not in arestas_2) and ((v2, u2) not in arestas_2):
+                    break
+            else:
+                return True
                     
         return False
