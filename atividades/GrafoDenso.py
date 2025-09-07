@@ -164,15 +164,11 @@ class GrafoDenso(Grafo):
             cores[v] = None
 
         for vertice in vertices:
-            # print(cores)
-            # print(f'{vertice}:')
             cor = 0
             v_adj = []
             for v in vertices:
                 if (vertice, v) in arestas or (v, vertice) in arestas:
                     v_adj.append(v)
-            
-            # print(f'  {v_adj}')
             
             sair = True
             while sair:
