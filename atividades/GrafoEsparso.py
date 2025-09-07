@@ -154,15 +154,14 @@ class GrafoEsparso(Grafo):
             for v in vertices:
                 if (vertice, v) in arestas or (v, vertice) in arestas:
                     v_adj.append(v)
-            
-            sair = True
-            while sair:
+
+            while True:
                 for u in v_adj:
                     if cores[u] == cor:
                         cor += 1
                         break
                 else:
-                    sair = False
+                    break
 
             cores[vertice] = cor
 
