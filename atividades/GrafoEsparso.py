@@ -1,6 +1,7 @@
 from Grafo import Grafo
 from typing import List, Tuple, Any
 from itertools import permutations
+from typing import Tuple
 
 class GrafoEsparso(Grafo):
     def __init__(self, rotulos: int | list):
@@ -138,3 +139,35 @@ class GrafoEsparso(Grafo):
                 return True
                     
         return False
+
+    def colorir_grafo(self) -> Tuple[int, list]:
+        vertices = self.get_vertices()
+        arestas = self.get_arestas()
+        
+        cores = {}
+        for v in vertices:
+            cores[v] = None
+
+        for vertice in vertices:
+            print(cores)
+            # print(f'{vertice}:')
+            cor = 0
+            v_adj = []
+            for v in vertices:
+                if (vertice, v) in arestas or (v, vertice) in arestas:
+                    v_adj.append(v)
+            
+            # print(f'  {v_adj}')
+            
+            sair = True
+            while sair:
+                for u in v_adj:
+                    if cores[u] == cor:
+                        cor += 1
+                        break
+                else:
+                    sair = False
+
+            cores[vertice] = cor
+
+        return (max(cores.values()) + 1, cores)
