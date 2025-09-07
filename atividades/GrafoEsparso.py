@@ -149,7 +149,7 @@ class GrafoEsparso(Grafo):
             cores[v] = None
 
         for vertice in vertices:
-            print(cores)
+            # print(cores)
             # print(f'{vertice}:')
             cor = 0
             v_adj = []
